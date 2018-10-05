@@ -1,4 +1,5 @@
 lib_LTLIBRARIES = libxayagame.la
+lib_LIBRARIES = libxayagamecmain.a
 xayagamedir = $(includedir)/xayagame
 
 EXTRA_DIST = rpc-stubs/game.json rpc-stubs/xaya.json
@@ -41,6 +42,10 @@ xayagame_HEADERS = \
   rpc-stubs/gamerpcserverstub.h \
   rpc-stubs/xayarpcclient.h \
   rpc-stubs/xayarpcserverstub.h
+
+libxayagamecmain_a_CXXFLAGS = \
+  $(JSONCPP_CFLAGS) $(GLOG_CFLAGS)
+libxayagamecmain_a_SOURCES = cmain.cpp
 
 check_PROGRAMS = tests
 TESTS = tests
